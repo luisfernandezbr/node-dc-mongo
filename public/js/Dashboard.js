@@ -115,19 +115,19 @@ function makeGraphs(error, apiData) {
 		.dimension(androidSdk)
 		.group(groupAndroidSdk);
 
-	var rowChartManufacturer = dc.rowChart("#row-chart-manufacturer");
-	rowChartManufacturer
-		.height(220)
-		.dimension(manufacturer)
-		.group(groupManufacturer)
-		.xAxis().ticks(4);
-
-	var rowChartModel = dc.rowChart("#row-chart-model");
-	rowChartModel
-		.height(220)
-		.dimension(model)
-		.group(groupModel)
-		.xAxis().ticks(4);
+	//var rowChartManufacturer = dc.rowChart("#row-chart-manufacturer");
+	//rowChartManufacturer
+	//	.height(220)
+	//	.dimension(manufacturer)
+	//	.group(groupManufacturer)
+	//	.xAxis().ticks(4);
+    //
+	//var rowChartModel = dc.rowChart("#row-chart-model");
+	//rowChartModel
+	//	.height(220)
+	//	.dimension(model)
+	//	.group(groupModel)
+	//	.xAxis().ticks(4);
 
     dc.renderAll();
 };
