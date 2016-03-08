@@ -11,6 +11,12 @@ function makeGraphs(error, apiData) {
 		//d.date_save = dateFormat.parse(d.date_save);
 		//d.date_save.setDate(1);
 		//d.total_donations = +d.total_donations;
+		if (d.manufacturer == null) {
+			d.manufacturer = 'NULL';
+		}
+		if (d.model == null) {
+			d.model = 'NULL';
+		}
 	});
 
 	//Create a Crossfilter instance
