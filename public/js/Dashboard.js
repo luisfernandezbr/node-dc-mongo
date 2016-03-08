@@ -20,18 +20,23 @@ function makeGraphs(error, apiData) {
 	var datePosted = ndx.dimension(function(d) { return d.date_save; });
 	var versionCode = ndx.dimension(function(d) { return d.version_code; });
 	var frontend = ndx.dimension(function(d) { return d.frontend; });
+	var androidSdk = ndx.dimension(function(d) { return d.android_sdk; });
 
 
 	//Calculate metrics
 	var projectsByDate = datePosted.group(); 
 	var projectsByVersionCode = versionCode.group();
 	var groupByFrontend = frontend.group();
+	var groupAndroidSdk =  androidSdk.group();
+
 	var all = ndx.groupAll();
 
 	//Calculate Groups
 	var totalVersionCode = versionCode.group().reduceSum(function(d) {
 		return d.versionCode;
 	});
+
+
 	//var totalDonationsState = state.group().reduceSum(function(d) {
 	//	return d.total_donations;
 	//});
@@ -67,6 +72,15 @@ function makeGraphs(error, apiData) {
 		.transitionDuration(1000)
 		.dimension(versionCode)
 		.group(projectsByVersionCode);
+
+	var pieChartAndroidSdk = dc.pieChart("#piechar-android-sdk");
+	pieChartAndroidSdk
+		.height(220)
+		.radius(90)
+		.innerRadius(40)
+		.transitionDuration(1000)
+		.dimension(androidSdk)
+		.group(groupAndroidSdk);
 
     dc.renderAll();
 };
