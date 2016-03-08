@@ -49,8 +49,8 @@ function makeGraphs(error, apiData) {
 	//var netTotalDonations = ndx.groupAll().reduceSum(function(d) {return d.total_donations;});
 
 	//Define threshold values for data
-	var minDate = datePosted.bottom(1)[0].date_save;
-	var maxDate = datePosted.top(1)[0].date_save;
+	var minDate = dateSaved.bottom(1)[0].date_save;
+	var maxDate = dateSaved.top(1)[0].date_save;
 
 	console.log(minDate);
 	console.log(maxDate);
