@@ -64,6 +64,12 @@ function makeGraphs(error, apiData) {
         .dimension(ndx)
         .group(all);
 
+	var totalRegisters = dc.numberDisplay("#total-registers");
+	totalRegisters
+		.formatNumber(d3.format("d"))
+		.valueAccessor(function(d){return d; })
+		.group(all);
+
 	var pieChartVersionCode = dc.pieChart("#funding-chart");
 	pieChartVersionCode
 		.height(220)
