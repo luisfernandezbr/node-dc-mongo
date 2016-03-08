@@ -21,6 +21,8 @@ function makeGraphs(error, apiData) {
 	var versionCode = ndx.dimension(function(d) { return d.version_code; });
 	var frontend = ndx.dimension(function(d) { return d.frontend; });
 	var androidSdk = ndx.dimension(function(d) { return d.android_sdk; });
+	var manufacturer = ndx.dimension(function(d) { return d.manufacturer; });
+	var model = ndx.dimension(function(d) { return d.model; });
 
 
 	//Calculate metrics
@@ -28,6 +30,8 @@ function makeGraphs(error, apiData) {
 	var projectsByVersionCode = versionCode.group();
 	var groupByFrontend = frontend.group();
 	var groupAndroidSdk =  androidSdk.group();
+	var groupManufacturer = manufacturer.group();
+	var groupModel = model.group();
 
 	var all = ndx.groupAll();
 
@@ -104,6 +108,20 @@ function makeGraphs(error, apiData) {
 		.transitionDuration(1000)
 		.dimension(androidSdk)
 		.group(groupAndroidSdk);
+
+	var rowChartManufacturer = dc.rowChart("#row-chart-manufacturer");
+	rowChartManufacturer
+		.height(220)
+		.dimension(manufacturer)
+		.group(groupManufacturer)
+		.xAxis().ticks(4);
+
+	var rowChartModel = dc.rowChart("#row-chart-model");
+	rowChartModel
+		.height(220)
+		.dimension(model)
+		.group(groupModel)
+		.xAxis().ticks(4);
 
     dc.renderAll();
 };
