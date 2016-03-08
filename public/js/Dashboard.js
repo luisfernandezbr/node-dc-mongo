@@ -8,9 +8,9 @@ function makeGraphs(error, apiData) {
 	var dataSet = apiData;
 	var dateFormat = d3.time.format("%m/%d/%Y");
 	dataSet.forEach(function(d) {
-		d.date_posted = dateFormat.parse(d.date_posted);
-				d.date_posted.setDate(1);
-		d.total_donations = +d.total_donations;
+		d.date_save = dateFormat.parse(d.date_save);
+				d.date_save.setDate(1);
+		//d.total_donations = +d.total_donations;
 	});
 
 	//Create a Crossfilter instance
@@ -25,23 +25,20 @@ function makeGraphs(error, apiData) {
 	//Calculate metrics
 	var projectsByDate = datePosted.group(); 
 	var projectsByVersionCode = versionCode.group();
-	var projectsByFrontend = frontend.group();
-
+	var groupByFrontend = frontend.group();
 	var all = ndx.groupAll();
 
 	//Calculate Groups
-	var totalDonationsState = state.group().reduceSum(function(d) {
-		return d.total_donations;
-	});
-
 	var totalVersionCode = versionCode.group().reduceSum(function(d) {
 		return d.versionCode;
 	});
-
-	var totalFrontend = frontend.group().reduceSum(function(d) {
-		return d.frontend;
-	});
-
+	//var totalDonationsState = state.group().reduceSum(function(d) {
+	//	return d.total_donations;
+	//});
+	//
+	//var totalFrontend = frontend.group().reduceSum(function(d) {
+	//	return d.frontend;
+	//});
 
 
 	//var netTotalDonations = ndx.groupAll().reduceSum(function(d) {return d.total_donations;});
@@ -53,57 +50,23 @@ function makeGraphs(error, apiData) {
 	console.log(minDate);
 	console.log(maxDate);
 
-    //Charts
-	var dateChart = dc.lineChart("#date-chart");
-	var gradeLevelChart = dc.rowChart("#grade-chart");
-	var fundingStatusChart = dc.pieChart("#funding-chart");
 
   	selectField = dc.selectMenu('#menuselect')
-        .dimension(androidSdk)
-        .group(byAndroidSdk);
+        .dimension(frontend)
+        .group(groupByFrontend);
 
        dc.dataCount("#row-selection")
         .dimension(ndx)
         .group(all);
 
-
-	totalProjects
-		.formatNumber(d3.format("d"))
-		.valueAccessor(function(d){return d; })
-		.group(all);
-
-
-	dateChart
-		//.width(600)
+	var pieChartVersionCode = dc.pieChart("#funding-chart");
+	pieChartVersionCode
 		.height(220)
-		.margins({top: 10, right: 50, bottom: 30, left: 50})
-		.dimension(datePosted)
-		.group(versionCode)
-		.renderArea(true)
-		.transitionDuration(500)
-		.x(d3.time.scale().domain([minDate, maxDate]))
-		.elasticY(true)
-		.renderHorizontalGridLines(true)
-    	.renderVerticalGridLines(true)
-		.xAxisLabel("Year")
-		.yAxis().ticks(6);
-
-	gradeLevelChart
-		//.width(300)
-		.height(220)
-        .dimension(frontend)
-        .group(projectsByFrontend)
-        .xAxis().ticks(4);
-
-  
-          fundingStatusChart
-            .height(220)
-            //.width(350)
-            .radius(90)
-            .innerRadius(40)
-            .transitionDuration(1000)
-            .dimension(versionCode)
-            .group(projectsByVersionCode);
+		.radius(90)
+		.innerRadius(40)
+		.transitionDuration(1000)
+		.dimension(versionCode)
+		.group(projectsByVersionCode);
 
     dc.renderAll();
 };
