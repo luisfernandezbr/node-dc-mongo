@@ -11,12 +11,12 @@ function makeGraphs(error, apiData) {
 		//d.date_save = dateFormat.parse(d.date_save);
 		//d.date_save.setDate(1);
 		//d.total_donations = +d.total_donations;
-		if (d.manufacturer == null) {
-			d.manufacturer = 'NULL';
-		}
-		if (d.model == null) {
-			d.model = 'NULL';
-		}
+		//if (d.manufacturer == null) {
+		//	d.manufacturer = 'NULL';
+		//}
+		//if (d.model == null) {
+		//	d.model = 'NULL';
+		//}
 	});
 
 	//Create a Crossfilter instance
@@ -27,8 +27,8 @@ function makeGraphs(error, apiData) {
 	var versionCode = ndx.dimension(function(d) { return d.version_code; });
 	var frontend = ndx.dimension(function(d) { return d.frontend; });
 	var androidSdk = ndx.dimension(function(d) { return d.android_sdk; });
-	var manufacturer = ndx.dimension(function(d) { return d.manufacturer; });
-	var model = ndx.dimension(function(d) { return d.model; });
+	//var manufacturer = ndx.dimension(function(d) { return d.manufacturer; });
+	//var model = ndx.dimension(function(d) { return d.model; });
 
 
 	//Calculate metrics
@@ -36,8 +36,8 @@ function makeGraphs(error, apiData) {
 	var projectsByVersionCode = versionCode.group();
 	var groupByFrontend = frontend.group();
 	var groupAndroidSdk =  androidSdk.group();
-	var groupManufacturer = manufacturer.group();
-	var groupModel = model.group();
+	//var groupManufacturer = manufacturer.group();
+	//var groupModel = model.group();
 
 	var all = ndx.groupAll();
 
