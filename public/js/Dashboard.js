@@ -17,14 +17,14 @@ function makeGraphs(error, apiData) {
 	var ndx = crossfilter(dataSet);
 
 	//Define Dimensions
-	var datePosted = ndx.dimension(function(d) { return d.date_save; });
+	var dateSaved = ndx.dimension(function(d) { return d.date_save; });
 	var versionCode = ndx.dimension(function(d) { return d.version_code; });
 	var frontend = ndx.dimension(function(d) { return d.frontend; });
 	var androidSdk = ndx.dimension(function(d) { return d.android_sdk; });
 
 
 	//Calculate metrics
-	var projectsByDate = datePosted.group(); 
+	var groupSavedDate = dateSaved.group();
 	var projectsByVersionCode = versionCode.group();
 	var groupByFrontend = frontend.group();
 	var groupAndroidSdk =  androidSdk.group();
@@ -63,6 +63,23 @@ function makeGraphs(error, apiData) {
        dc.dataCount("#row-selection")
         .dimension(ndx)
         .group(all);
+
+	var dateChart = dc.lineChart("#date-chart");
+	dateChart
+	//.width(600)
+		.height(220)
+		.margins({top: 10, right: 50, bottom: 30, left: 50})
+		.dimension(dateSaved)
+		.group(groupSavedDate)
+		.renderArea(true)
+		.transitionDuration(500)
+		.x(d3.time.scale().domain([minDate, maxDate]))
+		.elasticY(true)
+		.renderHorizontalGridLines(true)
+		.renderVerticalGridLines(true)
+		.xAxisLabel("Year")
+		.yAxis().ticks(6);
+
 
 	var totalRegisters = dc.numberDisplay("#total-registers");
 	totalRegisters
