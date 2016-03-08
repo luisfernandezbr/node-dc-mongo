@@ -8,8 +8,8 @@ function makeGraphs(error, apiData) {
 	var dataSet = apiData;
 	var dateFormat = d3.time.format("%m/%d/%Y");
 	dataSet.forEach(function(d) {
-		d.date_save = dateFormat.parse(d.date_save);
-				d.date_save.setDate(1);
+		//d.date_save = dateFormat.parse(d.date_save);
+		//d.date_save.setDate(1);
 		//d.total_donations = +d.total_donations;
 	});
 
