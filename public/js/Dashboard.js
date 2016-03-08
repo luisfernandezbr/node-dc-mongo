@@ -73,7 +73,7 @@ function makeGraphs(error, apiData) {
 		.dimension(versionCode)
 		.group(projectsByVersionCode);
 
-	var pieChartAndroidSdk = dc.pieChart("#piechar-android-sdk");
+	var pieChartAndroidSdk = dc.pieChart("#piechart-android-sdk");
 	pieChartAndroidSdk
 		.height(220)
 		.radius(90)
