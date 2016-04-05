@@ -75,21 +75,21 @@ function makeGraphs(error, apiData) {
         .dimension(ndx)
         .group(all);
 
-	var dateChart = dc.lineChart("#date-chart");
-	dateChart
-	//.width(600)
-		.height(220)
-		.margins({top: 10, right: 50, bottom: 30, left: 50})
-		.dimension(dateSaved)
-		.group(groupSavedDate)
-		.renderArea(true)
-		.transitionDuration(500)
-		.x(d3.time.scale().domain([minDate, maxDate]))
-		.elasticY(true)
-		.renderHorizontalGridLines(true)
-		.renderVerticalGridLines(true)
-		.xAxisLabel("Year")
-		.yAxis().ticks(6);
+	//var dateChart = dc.lineChart("#date-chart");
+	//dateChart
+	////.width(600)
+	//	.height(220)
+	//	.margins({top: 10, right: 50, bottom: 30, left: 50})
+	//	.dimension(dateSaved)
+	//	.group(groupSavedDate)
+	//	.renderArea(true)
+	//	.transitionDuration(500)
+	//	.x(d3.time.scale().domain([minDate, maxDate]))
+	//	.elasticY(true)
+	//	.renderHorizontalGridLines(true)
+	//	.renderVerticalGridLines(true)
+	//	.xAxisLabel("Year")
+	//	.yAxis().ticks(6);
 
 
 	var totalRegisters = dc.numberDisplay("#total-registers");
