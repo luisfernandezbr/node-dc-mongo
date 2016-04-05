@@ -122,6 +122,7 @@ function makeGraphs(error, apiData) {
 		.dimension(manufacturer)
 		.group(groupManufacturer)
 		.cap(10)
+		.orderNatural()
 		.xAxis().ticks(4);
 
 	var rowChartModel = dc.rowChart("#row-chart-model");
@@ -130,6 +131,7 @@ function makeGraphs(error, apiData) {
 		.dimension(model)
 		.group(groupModel)
 		.cap(10)
+		.orderNatural()
 		.xAxis().ticks(4);
 
     dc.renderAll();
