@@ -30,7 +30,7 @@ function makeGraphs(error, apiData) {
 	var androidSdk = ndx.dimension(function(d) { return d.android_sdk; });
 	var manufacturer = ndx.dimension(function(d) { return d.manufacturer; });
 	var model = ndx.dimension(function(d) { return d.model; });
-	var preloaded = ndx.dimension(function(d) { return d.preload; });
+	//var preloaded = ndx.dimension(function(d) { return d.preload; });
 
 
 	//Calculate metrics
@@ -40,7 +40,7 @@ function makeGraphs(error, apiData) {
 	var groupAndroidSdk =  androidSdk.group();
 	var groupManufacturer = manufacturer.group();
 	var groupModel = model.group();
-	var groupPreloaded = preloaded.group();
+	//var groupPreloaded = preloaded.group();
 
 	var all = ndx.groupAll();
 
@@ -134,14 +134,14 @@ function makeGraphs(error, apiData) {
 		.cap(10)
 		.xAxis().ticks(4);
 
-	var pieChartPreloaded = dc.pieChart("#piechart-preloaded");
-	pieChartPreloaded
-		.height(220)
-		.radius(90)
-		.innerRadius(40)
-		.transitionDuration(1000)
-		.dimension(preloaded)
-		.group(groupPreloaded);
+	//var pieChartPreloaded = dc.pieChart("#piechart-preloaded");
+	//pieChartPreloaded
+	//	.height(220)
+	//	.radius(90)
+	//	.innerRadius(40)
+	//	.transitionDuration(1000)
+	//	.dimension(preloaded)
+	//	.group(groupPreloaded);
 
     dc.renderAll();
 };
