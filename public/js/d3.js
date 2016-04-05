@@ -767,7 +767,8 @@
       this.textContent = "";
     } : function() {
       this.textContent = value;
-    }) : this.node().textContent;
+    }) :
+    this.node().textContent;
   };
   d3_selectionPrototype.html = function(value) {
     return arguments.length ? this.each(typeof value === "function" ? function() {
