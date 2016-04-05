@@ -17,6 +17,7 @@ function makeGraphs(error, apiData) {
 		//if (d.model == null) {
 		//	d.model = 'NULL';
 		//}
+		console.log('date_save:' + d.date_save + ' | version_code:' + d.version_code + ' | frontend:' + d.frontend);
 	});
 
 	//Create a Crossfilter instance
