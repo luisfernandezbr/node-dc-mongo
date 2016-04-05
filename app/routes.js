@@ -8,7 +8,7 @@ module.exports = function(app) {
 	// sample api route
  app.get('/api/data', function(req, res) {
   // use mongoose to get all nerds in the database
-  Subjects.find({}, {'_id': 0, 'date_save': 1, 'version_code': 1, 'frontend': 1, 'android_sdk': 1, 'manufacturer': 1, 'model': 1}, function(err, subjectDetails) {
+  Subjects.find({}, {'_id': 0, 'date_save': 1, 'version_code': 1, 'frontend': 1, 'android_sdk': 1, 'manufacturer': 1, 'model': 1, 'preloaded': 1}, function(err, subjectDetails) {
    // if there is an error retrieving, send the error. 
        // nothing after res.send(err) will execute
    if (err) 
