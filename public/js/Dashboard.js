@@ -30,7 +30,7 @@ function makeGraphs(error, apiData) {
 	var androidSdk = ndx.dimension(function(d) { return d.android_sdk; });
 	var manufacturer = ndx.dimension(function(d) { return d.manufacturer; });
 	var model = ndx.dimension(function(d) { return d.model; });
-	var preloaded = ndx.dimension(function(d) { return d.model; });
+	var preloaded = ndx.dimension(function(d) { return d.preload; });
 
 
 	//Calculate metrics
