@@ -135,7 +135,7 @@ function makeGraphs(error, apiData) {
 		.xAxis().ticks(4);
 
 	var pieChartPreloaded = dc.pieChart("#piechart-preloaded");
-	pieChartAndroidSdk
+	pieChartPreloaded
 		.height(220)
 		.radius(90)
 		.innerRadius(40)
